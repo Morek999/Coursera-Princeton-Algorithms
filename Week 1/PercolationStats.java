@@ -1,10 +1,11 @@
 /******************************************************************************
  *  Name: MingTing Lu
- *  Date: 20181213
+ *  Date: 20181217
  *  Description: Percolation testing algorithm, statistic check.
  *  (Coursera Princeton Algorithm Part 1)
  *****************************************************************************/
 
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
@@ -51,13 +52,16 @@ public class PercolationStats {
     }
 
     public static void main(String[] args) {
-        PercolationStats p = new PercolationStats(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-        float m = mean();
-        float s = stddev();
-        String ci = "[" + (m - 1.96 * s / Math.sqrt(trials)) + ", " + (m + 1.96 * s / Math.sqrt(trials)) + "]";
-        
-        StdOut.println("mean                    = " + m);
-        StdOut.println("stddev                  = " + s);
-        StdOut.println("95% confidence interval = " + ci);
+        int n = Integer.parseInt(args[0]);
+        int t = Integer.parseInt(args[1]);
+
+        PercolationStats ps = new PercolationStats(n, t);
+
+        double m = ps.mean();
+        double s = ps.stddev();
+        String confidence = "[" + (m - 1.96 * s / Math.sqrt(t)) + ", " + (m + 1.96 * s / Math.sqrt(t)) + "]";
+        StdOut.println("mean                    = " + ps.mean());
+        StdOut.println("stddev                  = " + ps.stddev());
+        StdOut.println("95% confidence interval = " + confidence);
     }
 }

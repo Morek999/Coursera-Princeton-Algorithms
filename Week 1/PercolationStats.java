@@ -51,6 +51,13 @@ public class PercolationStats {
     }
 
     public static void main(String[] args) {
-
+        PercolationStats p = new PercolationStats(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+        float m = mean();
+        float s = stddev();
+        String ci = "[" + (m - 1.96 * s) + ", " + (m + 1.96 * s) + "]";
+        
+        StdOut.println("mean                    = " + m);
+        StdOut.println("stddev                  = " + s);
+        StdOut.println("95% confidence interval = " + ci);
     }
 }

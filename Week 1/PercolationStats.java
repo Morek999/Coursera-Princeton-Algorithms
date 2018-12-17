@@ -54,7 +54,7 @@ public class PercolationStats {
         PercolationStats p = new PercolationStats(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
         float m = mean();
         float s = stddev();
-        String ci = "[" + (m - 1.96 * s) + ", " + (m + 1.96 * s) + "]";
+        String ci = "[" + (m - 1.96 * s / Math.sqrt(trials)) + ", " + (m + 1.96 * s / Math.sqrt(trials)) + "]";
         
         StdOut.println("mean                    = " + m);
         StdOut.println("stddev                  = " + s);

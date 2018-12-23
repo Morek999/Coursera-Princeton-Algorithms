@@ -76,13 +76,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         private int i = 0;
         private int[] id;
 
-        public ArrayIterator() {
-            id = new int[n];     // [0, 1, 2, ...]
-            if (n > 0) {
-                id[0] = 0;
-                for (int x = 1; x < n; x++) {
-                    int k = StdRandom.uniform(x + 1);
-                    id[x] = id[k];
+        public ArrayIterator() {                           // generate random seq from 0 to n-1
+            id = new int[n];                               // [0, 1, 2, ...]
+            if (n > 0) {                                   // prevent from empty input
+                id[0] = 0;                                 // initialize first element
+                for (int x = 1; x < n; x++) {              // from 1 to n-1
+                    int k = StdRandom
+                            .uniform(x + 1);      // randomly insert at location from 0 to n
+                    id[x] = id[k];                         // swap location x and k
                     id[k] = x;
                 }
             }
